@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="changeButtontext()">{{buttonname}}</button>
+
+      <button @click="addli()">Добавить</button>
+
+      <ul>
+        <li></li>
+        <li @click="remove(index)" v-for="(item,index) in newli">{{index}} {{item.id}}{{item.litext}}</li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script type="module">
+      new Vue({
+        el: `#app`,
+        data: {
+          buttonname: "Перевернуть",
+          id: 0,
+          litext: `Новый текстовый элемент`,
+          newli: [],
+        },
+        methods: {
+          changeButtontext() {
+            let reverse = this.buttonname.split("");
+            reverse.reverse();
+            this.buttonname = reverse.join("");
+          },
+          addli() {
+            let itemLi = {
+              id: this.id,
+              litext: this.litext,
+            };
+            this.id++;
+            this.newli.push(itemLi);
+          },
+          remove(index) {
+            console.log(index);
+            this.newli.splice(index,1)
+           
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
