@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="product in products">
+          Название: {{product.name}} - Цена:{{product.price}}
+        </li>
+        <button @click="priceUp">По возрастанию</button>
+        <button @click="priceDown">По убыванию</button>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            { name: "banana", price: 100 },
+            { name: "fish", price: 400 },
+            { name: "milk", price: 800 },
+            { name: "chocolate", price: 50 },
+            { name: "juice", price: 250 },
+          ],
+        },
+        methods: {
+          priceUp() {
+            this.products.sort((a, b) => (a.price > b.price ? 1 : -1));
+          },
+          priceDown() {
+            this.products.sort((a, b) => (a.price < b.price ? 1 : -1));
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
