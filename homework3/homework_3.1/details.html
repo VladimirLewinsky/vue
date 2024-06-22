@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" style="text-decoration: none">
+        <div class="header_logo">
+          <img class="header_logo_img" src="./img/Logo.png" alt="png" />
+          <h3>Interno</h3>
+        </div>
+      </a>
+      <nav class="header_menu">
+        <a href="#">Home</a>
+        <a href="#">Project</a>
+        <a href="#">Blog</a>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="main_banner">
+        <img src="./img/details/banner_details.jpg" alt="img" />
+      </div>
+      <div class="main_container" id="app">
+        <div class="main_container__articles">
+            <div class="main_container__articles__tags">
+                <h1 class="main_container__articles__tags__title">Tags</h1>
+                <div class="main_container__articles__tags_container">
+                <button @click="activeel=button,currentTab=button" type="button" class="buttonjs main_container__articles__tags_container__button" v-for="button in nameButtons" :key="button.id" :class="activeel ===button  ? 'active':''">{{button}}</button>
+              </div>
+              
+        </div>
+        <component :is="ChangeTabs" />
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer_social">
+        <a href="#" style="text-decoration: none">
+          <div class="footer_logo">
+            <img class="footer_logo_img" src="./img/Logo.png" alt="png" />
+            <h3>Interno</h3>
+          </div>
+        </a>
+        <p class="footer_social__text">
+          It is a long established fact that a reader will be distracted
+          lookings.
+        </p>
+
+        <div class="footer_social__icons">
+          <a href="#">
+            <img src="./img/footer/1.png" alt="png" />
+          </a>
+          <a href="#">
+            <img src="./img/footer/2.png" alt="png" />
+          </a>
+        </div>
+      </div>
+      <div class="footer_menu">
+        <h3 class="footer_menu_nav_title">Pages</h3>
+        <nav class="footer_menu_nav">
+          <!-- <h3 class="footer_menu_nav_title">Pages</h3> -->
+          <a class="footer_menu_nav_page" href="#">Home</a>
+          <a class="footer_menu_nav_page" href="#">Project</a>
+          <a class="footer_menu_nav_page" href="#">Blog</a>
+        </nav>
+      </div>
+      <div class="footer_contact">
+        <h3 class="footer_contact_title">Contact</h3>
+        <div class="footer_contact_about">
+          <p class="footer_contact_adress">
+            55 East Birchwood Ave. Brooklyn, New York 11201
+          </p>
+          <p class="footer_contact_email">contact@interno.com</p>
+          <p class="footer_contact_number">(123) 456 - 7890</p>
+        </div>
+      </div>
+    </footer>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
+      Vue.config.devtools = true;
+    </script>
+    <script src="./comp_details.js"></script>
+    <script type="module">
+      new Vue({
+        el: "#app",
+        data: {
+          nameButtons: ["Kitchen","Bedroom","Building","Architecture","KitchenPlanning",],
+          currentTab: 'Kitchen',
+          activeel: '',
+        },
+        computed:{
+            ChangeTabs(){
+                return `new-${this.currentTab}`
+            }
+        },
+        methods: {
+            // changeColor() {
+            //     const allButtons = document.querySelectorAll('.buttonjs');
+            //     allButtons.forEach(element=>{
+            //     element.addEventListener('click',function(e){
+            //         if (element.classList.contains('active')){
+            //             element.classList.remove('active')
+            //         }else(element.classList.add("active"));
+                   
+            //      })
+   
+    
+            //     })
+            // },
+        },
+        
+      });
+    </script>
+    <script src="./java.js">
+       
+    </script>
+  </body>
+</html>
