@@ -1,0 +1,23 @@
+.error_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    &__title{
+        font-size: 450px;
+        color: #4D5053;}
+    &__about{
+        font-size: 100px;
+        color: #4D5053;
+    }
+    &__button{
+        padding: 10px 40px;
+        background-color: #4D5053;
+        color: white;
+    }
+    &__button:hover{
+        background-color: white;
+        color: #4D5053;
+    }
+}
